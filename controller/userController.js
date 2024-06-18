@@ -87,8 +87,8 @@ export const login = async (req, res, next) => {
         res.status(200).cookie("token",token,{
             httponly:true,
             expires:new Date(Date.now()+process.env.COOKIE_EXPIRES*24*60*60*1000),
-            // secure:true,
-            // sameSite:"None",
+            secure:true,
+            sameSite:"None",
         }).json({
             success: true,
             message: "User logged in successfully",
@@ -137,8 +137,8 @@ export const logout=async(req,res,next)=>{
     res.status(200).cookie("token","",{
         httponly:true,
         expires:new Date(Date.now()),
-        // secure:true,
-        // sameSite:"None",
+        secure:true,
+        sameSite:"None",
     }).json({
         success: true,
         message: "User logged out successfully"
